@@ -12,17 +12,25 @@ namespace ReceivablesFactoring.WebApi.Controllers;
 public class CompanyController : ControllerBase
 {
     private readonly ICompanyService _companyService;
-    
-    public CompanyController(ICompanyService companyService)
+    private readonly ITokenProvider _tokenProvider;
+
+    public CompanyController(ICompanyService companyService, ITokenProvider tokenProvider)
     {
         _companyService = companyService;
+        _tokenProvider = tokenProvider;
     }
-    
+
     [HttpPost]
     [AllowAnonymous]
     public async Task<ActionResult<CompanyDto>> CreateCompany([FromBody] CompanyDto companyDto)
     {
         return StatusCode(StatusCodes.Status201Created, await _companyService.CreateCompanyAsync(companyDto));
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<CompanyDto>> GetCompany()
+    {
+        return StatusCode(StatusCodes.Status200OK, await _companyService.GetCompanyAsync(_tokenProvider.GetCompanyIdFromToken()));
     }
 
     [HttpPost("auth/{cnpj}")]

@@ -25,4 +25,10 @@ public class InvoiceController : ControllerBase
     {
         return StatusCode(StatusCodes.Status201Created, await _invoiceService.CreateInvoiceAsync(_tokenProvider.GetCompanyIdFromToken(), invoiceDto));
     }
+
+    [HttpGet]
+    public async Task<List<InvoiceDto>> GetInvoices()
+    {
+        return await _invoiceService.GetInvoicesAsync(_tokenProvider.GetCompanyIdFromToken());
+    }
 }

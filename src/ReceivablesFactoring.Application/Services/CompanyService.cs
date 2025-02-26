@@ -60,4 +60,21 @@ public class CompanyService : ICompanyService
 
         return companyDto;
     }
+
+    public async Task<CompanyDto> GetCompanyAsync(Guid id)
+    {
+        var company = await _companyRepository.GetByIdAsync(id);
+        if (company is null)
+        {
+            throw new NotFoundException("Company not found");
+        }
+
+        return new CompanyDto
+        {
+            Cnpj = company.Cnpj,
+            Name = company.Name,
+            MonthlyBilling = company.MonthlyBilling,
+            Category = company.Category.GetEnumDescription()
+        };
+    }
 }

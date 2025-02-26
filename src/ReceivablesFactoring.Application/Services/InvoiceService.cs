@@ -3,6 +3,7 @@ using ReceivablesFactoring.Application.Models;
 using ReceivablesFactoring.Domain.Invoices;
 using FluentValidation;
 using ReceivablesFactoring.Domain.Exceptions;
+
 namespace ReceivablesFactoring.Application.Services;
 
 public class InvoiceService : IInvoiceService
@@ -43,5 +44,17 @@ public class InvoiceService : IInvoiceService
         await _unitOfWork.Commit();
 
         return invoiceDto;
+    }
+
+    public async Task<List<InvoiceDto>> GetInvoicesAsync(Guid companyId)
+    {
+        var invoices = await _invoiceRepository.GetByCompanyIdAsync(companyId);
+
+        return invoices.Select(i => new InvoiceDto
+        {
+            Number = i.Number,
+            Value = i.Value,
+            DueDate = i.DueDate,
+        }).ToList();
     }
 }
