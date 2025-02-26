@@ -1,0 +1,80 @@
+# Ignore build results
+[Bb]in/
+[Oo]bj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userprefs
+*.lock.json
+
+# Ignore Visual Studio temporary files
+*.vs/
+*.vscode/
+
+# Ignore ReSharper files
+_ReSharper.*
+*.resharper
+
+# Ignore NuGet packages
+.nuget/
+packages/
+
+# Ignore local development files
+*.swp
+*.swo
+
+# Ignore test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Ignore output files
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+
+# Ignore .NET Core specific files
+**/.local/
+**/.sonar/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/.dotnet/
+**/.tools/
+
+# Ignore Rider/IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore Azure Functions
+func/
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore Rider/IntelliJ IDEA files
+.idea/
+*.iml
+
+# Ignore Node.js files (se você usar Node.js no projeto)
+node_modules/
+npm-debug.log
+
+# Ignore Python files (se você usar Python no projeto)
+__pycache__/
+*.pyc
+
+# Ignore logs and diagnostics
+*.log
+*.nlog
+*.sln.iml
+
+# Ignore JetBrains Rider files
+.idea/
+*.sln.iml
+
+# Ignore local development files
+.env
+*.local
